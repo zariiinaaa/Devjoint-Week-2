@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Mv4kz/VSz4M=",
+  "dgSpecHash": "9VQOeHCP230=",
   "success": true,
   "projectFilePath": "C:\\Users\\asus\\OneDrive\\Desktop\\Devjoint\\LibraryManagement\\LibraryManagement.Tests\\LibraryManagement.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\asus\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\asus\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
+    "C:\\Users\\asus\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
     "C:\\Users\\asus\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\asus\\.nuget\\packages\\coverlet.collector\\6.0.4\\coverlet.collector.6.0.4.nupkg.sha512",
     "C:\\Users\\asus\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",

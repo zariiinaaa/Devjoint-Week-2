@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "CvwzV/Kq6+k=",
+  "dgSpecHash": "N8B1qpd0cZE=",
   "success": true,
   "projectFilePath": "C:\\Users\\asus\\OneDrive\\Desktop\\Devjoint\\LibraryManagement\\LibraryManagement.Application\\LibraryManagement.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\asus\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512"
+  ],
   "logs": []
 }

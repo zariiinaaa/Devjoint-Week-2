@@ -17,6 +17,7 @@ public class AppDbContext : DbContext
     public DbSet<Member> Members => Set<Member>();
 
     public DbSet<Loan> Loans => Set<Loan>();
+    public DbSet<User> Users => Set<User>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -73,5 +74,29 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Member>()
             .HasIndex(member => member.Email)
             .IsUnique();
-     }
+        modelBuilder.Entity<User>(userBuilder =>
+        {
+            userBuilder.ToTable("Users");
+
+            userBuilder.HasKey(user => user.Id);
+
+            userBuilder.Property(user => user.Username)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            userBuilder.Property(user => user.Email)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            userBuilder.Property(user => user.PasswordHash)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            userBuilder.HasIndex(user => user.Username)
+                .IsUnique();
+
+            userBuilder.HasIndex(user => user.Email)
+                .IsUnique();
+        });
+    }
 }   

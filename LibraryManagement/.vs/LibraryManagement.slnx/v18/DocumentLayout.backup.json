@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\asus\\OneDrive\\Desktop\\Devjoint\\LibraryManagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{517AF4D5-F680-40CB-919A-B3183658FF8E}|LibraryManagement.Tests\\LibraryManagement.Tests.csproj|c:\\users\\asus\\onedrive\\desktop\\devjoint\\librarymanagement\\librarymanagement.tests\\bookservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{517AF4D5-F680-40CB-919A-B3183658FF8E}|LibraryManagement.Tests\\LibraryManagement.Tests.csproj|solutionrelative:librarymanagement.tests\\bookservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\asus\\OneDrive\\Desktop\\Devjoint\\LibraryManagement\\LibraryManagement.Infrastructure\\Migrations\\20260720131947_AddUserEntity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LibraryManagement.Infrastructure\\Migrations\\20260720131947_AddUserEntity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "BookServiceTests.cs",
-              "DocumentMoniker": "C:\\Users\\asus\\OneDrive\\Desktop\\Devjoint\\LibraryManagement\\LibraryManagement.Tests\\BookServiceTests.cs",
-              "RelativeDocumentMoniker": "LibraryManagement.Tests\\BookServiceTests.cs",
-              "ToolTip": "C:\\Users\\asus\\OneDrive\\Desktop\\Devjoint\\LibraryManagement\\LibraryManagement.Tests\\BookServiceTests.cs",
-              "RelativeToolTip": "LibraryManagement.Tests\\BookServiceTests.cs",
+              "Title": "20260720131947_AddUserEntity.cs",
+              "DocumentMoniker": "C:\\Users\\asus\\OneDrive\\Desktop\\Devjoint\\LibraryManagement\\LibraryManagement.Infrastructure\\Migrations\\20260720131947_AddUserEntity.cs",
+              "RelativeDocumentMoniker": "LibraryManagement.Infrastructure\\Migrations\\20260720131947_AddUserEntity.cs",
+              "ToolTip": "C:\\Users\\asus\\OneDrive\\Desktop\\Devjoint\\LibraryManagement\\LibraryManagement.Infrastructure\\Migrations\\20260720131947_AddUserEntity.cs",
+              "RelativeToolTip": "LibraryManagement.Infrastructure\\Migrations\\20260720131947_AddUserEntity.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-20T12:09:24.748Z",
+              "WhenOpened": "2026-07-20T13:19:47.194Z",
               "EditorCaption": ""
             }
           ]

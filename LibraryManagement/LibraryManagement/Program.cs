@@ -29,6 +29,8 @@ builder.Services.AddScoped<IMemberService, MemberService>();
 
 builder.Services.AddScoped<ILoanRepository, LoanRepository>();
 builder.Services.AddScoped<ILoanService, LoanService>();
+
+builder.Services.AddScoped<IPasswordHasher, BCryptPasswordHasher>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

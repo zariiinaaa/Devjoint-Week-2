@@ -167,3 +167,4 @@ C:\Users\asus\OneDrive\Desktop\Devjoint\LibraryManagement\LibraryManagement\bin\
 C:\Users\asus\OneDrive\Desktop\Devjoint\LibraryManagement\LibraryManagement\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\asus\OneDrive\Desktop\Devjoint\LibraryManagement\LibraryManagement\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\asus\OneDrive\Desktop\Devjoint\LibraryManagement\LibraryManagement\obj\Debug\net10.0\LibraryManagement.sourcelink.json
+C:\Users\asus\OneDrive\Desktop\Devjoint\LibraryManagement\LibraryManagement\bin\Debug\net10.0\BCrypt-Net-Next.dll
