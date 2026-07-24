@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagement.Controllers;
 
+/// <summary>
+/// Manages book loan records.
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class LoansController : ControllerBase
@@ -15,16 +18,31 @@ public class LoansController : ControllerBase
         _loanService = loanService;
     }
 
+    /// <summary>
+    /// Returns a paginated and sorted list of loans.
+    /// </summary>
+    /// <param name="query">Pagination and sorting parameters.</param>
     [HttpGet]
+    [ProducesResponseType(
+        typeof(PagedResponseDto<LoanResponseDto>),
+        StatusCodes.Status200OK)]
     public async Task<ActionResult<PagedResponseDto<LoanResponseDto>>>
-    GetAll([FromQuery] ListQueryDto query)
+        GetAll([FromQuery] ListQueryDto query)
     {
-        var result = await _loanService.GetPagedAsync(query);
+        var loans = await _loanService.GetPagedAsync(query);
 
-        return Ok(result);
+        return Ok(loans);
     }
 
-    [HttpGet("{id}")]
+    /// <summary>
+    /// Returns a loan by identifier.
+    /// </summary>
+    /// <param name="id">Loan identifier.</param>
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(
+        typeof(LoanResponseDto),
+        StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<LoanResponseDto>> GetById(int id)
     {
         var loan = await _loanService.GetByIdAsync(id);
@@ -37,21 +55,42 @@ public class LoansController : ControllerBase
         return Ok(loan);
     }
 
+    /// <summary>
+    /// Creates a new book loan.
+    /// </summary>
+    /// <param name="dto">Information for the new loan.</param>
     [HttpPost]
-    public async Task<ActionResult<LoanResponseDto>> Create(LoanCreateDto dto)
+    [ProducesResponseType(
+        typeof(LoanResponseDto),
+        StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<ActionResult<LoanResponseDto>>
+        Create(LoanCreateDto dto)
     {
-        var createdLoan =await _loanService.CreateAsync(dto);
+        var loan = await _loanService.CreateAsync(dto);
 
-        return CreatedAtAction(nameof(GetById), new { id = createdLoan.Id },
-            createdLoan);
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id = loan.Id },
+            loan);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(
-    int id,
-    LoanUpdateDto dto)
+    /// <summary>
+    /// Updates an existing book loan.
+    /// </summary>
+    /// <param name="id">Loan identifier.</param>
+    /// <param name="dto">Updated loan information.</param>
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<IActionResult>
+        Update(int id, LoanUpdateDto dto)
     {
-        var updated =await _loanService.UpdateAsync(id, dto);
+        var updated = await _loanService.UpdateAsync(id, dto);
 
         if (!updated)
         {
@@ -61,7 +100,13 @@ public class LoansController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{id}")]
+    /// <summary>
+    /// Deletes a loan.
+    /// </summary>
+    /// <param name="id">Loan identifier.</param>
+    [HttpDelete("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(int id)
     {
         var deleted = await _loanService.DeleteAsync(id);

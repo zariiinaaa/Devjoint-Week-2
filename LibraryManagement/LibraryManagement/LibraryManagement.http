@@ -1,6 +1,21 @@
 @LibraryManagement_HostAddress = http://localhost:5098
 
-GET {{LibraryManagement_HostAddress}}/weatherforecast/
+GET {{LibraryManagement_HostAddress}}/api/books?pageNumber=1&pageSize=10&sortBy=title&sortDirection=asc
+Accept: application/json
+
+###
+
+GET {{LibraryManagement_HostAddress}}/api/authors?pageNumber=1&pageSize=10&sortBy=firstName&sortDirection=asc
+Accept: application/json
+
+###
+
+GET {{LibraryManagement_HostAddress}}/api/members?pageNumber=1&pageSize=10&sortBy=firstName&sortDirection=asc
+Accept: application/json
+
+###
+
+GET {{LibraryManagement_HostAddress}}/api/loans?pageNumber=1&pageSize=10&sortBy=dueDate&sortDirection=asc
 Accept: application/json
 
 ###

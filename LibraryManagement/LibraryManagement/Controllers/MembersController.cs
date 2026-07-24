@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagement.Controllers;
 
+/// <summary>
+/// Manages library member records.
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class MembersController : ControllerBase
@@ -15,16 +18,31 @@ public class MembersController : ControllerBase
         _memberService = memberService;
     }
 
+    /// <summary>
+    /// Returns a paginated and sorted list of members.
+    /// </summary>
+    /// <param name="query">Pagination and sorting parameters.</param>
     [HttpGet]
+    [ProducesResponseType(
+        typeof(PagedResponseDto<MemberResponseDto>),
+        StatusCodes.Status200OK)]
     public async Task<ActionResult<PagedResponseDto<MemberResponseDto>>>
-     GetAll([FromQuery] ListQueryDto query)
+        GetAll([FromQuery] ListQueryDto query)
     {
-        var result = await _memberService.GetPagedAsync(query);
+        var members = await _memberService.GetPagedAsync(query);
 
-        return Ok(result);
+        return Ok(members);
     }
 
-    [HttpGet("{id}")]
+    /// <summary>
+    /// Returns a member by identifier.
+    /// </summary>
+    /// <param name="id">Member identifier.</param>
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(
+        typeof(MemberResponseDto),
+        StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<MemberResponseDto>> GetById(int id)
     {
         var member = await _memberService.GetByIdAsync(id);
@@ -37,18 +55,39 @@ public class MembersController : ControllerBase
         return Ok(member);
     }
 
+    /// <summary>
+    /// Creates a new library member.
+    /// </summary>
+    /// <param name="dto">Information for the new member.</param>
     [HttpPost]
-    public async Task<ActionResult<MemberResponseDto>> Create(
-    MemberCreateDto dto)
+    [ProducesResponseType(
+        typeof(MemberResponseDto),
+        StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<ActionResult<MemberResponseDto>>
+        Create(MemberCreateDto dto)
     {
-        var createdMember = await _memberService.CreateAsync(dto);
+        var member = await _memberService.CreateAsync(dto);
 
-        return CreatedAtAction( nameof(GetById),new { id = createdMember.Id },
-            createdMember);
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id = member.Id },
+            member);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, MemberUpdateDto dto)
+    /// <summary>
+    /// Updates an existing member.
+    /// </summary>
+    /// <param name="id">Member identifier.</param>
+    /// <param name="dto">Updated member information.</param>
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<IActionResult>
+        Update(int id, MemberUpdateDto dto)
     {
         var updated = await _memberService.UpdateAsync(id, dto);
 
@@ -60,10 +99,17 @@ public class MembersController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{id}")]
+    /// <summary>
+    /// Deletes a member.
+    /// </summary>
+    /// <param name="id">Member identifier.</param>
+    [HttpDelete("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<IActionResult> Delete(int id)
     {
-        var deleted =await _memberService.DeleteAsync(id);
+        var deleted = await _memberService.DeleteAsync(id);
 
         if (!deleted)
         {

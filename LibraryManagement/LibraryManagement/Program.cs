@@ -1,6 +1,6 @@
 using LibraryManagement.Core.Interfaces;
 using LibraryManagement.Infrastructure.Repositories;
-
+using System.Reflection;
 using LibraryManagement.Middleware;
 using LibraryManagement.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -33,16 +33,30 @@ builder.Services.AddScoped<ILoanService, LoanService>();
 builder.Services.AddScoped<IPasswordHasher, BCryptPasswordHasher>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    var xmlFile =
+        $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+
+    var xmlPath =
+        Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+    options.IncludeXmlComments(xmlPath);
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+
+app.UseSwaggerUI(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    options.SwaggerEndpoint(
+        "/swagger/v1/swagger.json",
+        "Library Management API v1");
+
+    options.RoutePrefix = "swagger";
+});
 
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseAuthorization();

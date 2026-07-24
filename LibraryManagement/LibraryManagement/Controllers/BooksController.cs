@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagement.Controllers;
 
+/// <summary>
+/// Manages book records.
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class BooksController : ControllerBase
@@ -15,15 +18,31 @@ public class BooksController : ControllerBase
         _bookService = bookService;
     }
 
+    /// <summary>
+    /// Returns a paginated and sorted list of books.
+    /// </summary>
+    /// <param name="query">Pagination and sorting parameters.</param>
     [HttpGet]
-    public async Task<ActionResult<PagedResponseDto<BookResponseDto>>> GetAll([FromQuery] ListQueryDto query)
+    [ProducesResponseType(
+        typeof(PagedResponseDto<BookResponseDto>),
+        StatusCodes.Status200OK)]
+    public async Task<ActionResult<PagedResponseDto<BookResponseDto>>>
+        GetAll([FromQuery] ListQueryDto query)
     {
-        var result =await _bookService.GetPagedAsync(query);
+        var books = await _bookService.GetPagedAsync(query);
 
-        return Ok(result);
+        return Ok(books);
     }
 
-    [HttpGet("{id}")]
+    /// <summary>
+    /// Returns a book by its identifier.
+    /// </summary>
+    /// <param name="id">Book identifier.</param>
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(
+        typeof(BookResponseDto),
+        StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<BookResponseDto>> GetById(int id)
     {
         var book = await _bookService.GetByIdAsync(id);
@@ -36,12 +55,20 @@ public class BooksController : ControllerBase
         return Ok(book);
     }
 
+    /// <summary>
+    /// Creates a new book.
+    /// </summary>
+    /// <param name="dto">Information for the new book.</param>
     [HttpPost]
-    public async Task<ActionResult<BookResponseDto>> Create(
-    BookCreateDto dto)
+    [ProducesResponseType(
+        typeof(BookResponseDto),
+        StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<ActionResult<BookResponseDto>>
+        Create(BookCreateDto dto)
     {
-        var createdBook =
-            await _bookService.CreateAsync(dto);
+        var createdBook = await _bookService.CreateAsync(dto);
 
         return CreatedAtAction(
             nameof(GetById),
@@ -49,12 +76,20 @@ public class BooksController : ControllerBase
             createdBook);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(
-      int id,
-      BookUpdateDto dto)
+    /// <summary>
+    /// Updates an existing book.
+    /// </summary>
+    /// <param name="id">Book identifier.</param>
+    /// <param name="dto">Updated book information.</param>
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<IActionResult>
+        Update(int id, BookUpdateDto dto)
     {
-        var updated =await _bookService.UpdateAsync(id, dto);
+        var updated = await _bookService.UpdateAsync(id, dto);
 
         if (!updated)
         {
@@ -64,7 +99,13 @@ public class BooksController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{id}")]
+    /// <summary>
+    /// Deletes a book.
+    /// </summary>
+    /// <param name="id">Book identifier.</param>
+    [HttpDelete("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(int id)
     {
         var deleted = await _bookService.DeleteAsync(id);
