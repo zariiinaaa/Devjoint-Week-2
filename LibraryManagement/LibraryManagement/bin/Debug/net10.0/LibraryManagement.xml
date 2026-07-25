@@ -4,6 +4,23 @@
         <name>LibraryManagement</name>
     </assembly>
     <members>
+        <member name="T:LibraryManagement.Controllers.AuthController">
+            <summary>
+            Handles user registration and authentication.
+            </summary>
+        </member>
+        <member name="M:LibraryManagement.Controllers.AuthController.Register(LibraryManagement.Core.DTOs.RegisterRequestDto)">
+            <summary>
+            Registers a new user and returns a JWT access token.
+            </summary>
+            <param name="dto">New user registration information.</param>
+        </member>
+        <member name="M:LibraryManagement.Controllers.AuthController.Login(LibraryManagement.Core.DTOs.LoginRequestDto)">
+            <summary>
+            Authenticates a user and returns a JWT access token.
+            </summary>
+            <param name="dto">User login information.</param>
+        </member>
         <member name="T:LibraryManagement.Controllers.AuthorsController">
             <summary>
             Manages author records.

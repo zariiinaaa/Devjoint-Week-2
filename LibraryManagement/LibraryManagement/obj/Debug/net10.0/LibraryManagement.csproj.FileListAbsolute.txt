@@ -170,3 +170,4 @@ C:\Users\asus\OneDrive\Desktop\Devjoint\LibraryManagement\LibraryManagement\obj\
 C:\Users\asus\OneDrive\Desktop\Devjoint\LibraryManagement\LibraryManagement\bin\Debug\net10.0\BCrypt-Net-Next.dll
 C:\Users\asus\OneDrive\Desktop\Devjoint\LibraryManagement\LibraryManagement\bin\Debug\net10.0\LibraryManagement.xml
 C:\Users\asus\OneDrive\Desktop\Devjoint\LibraryManagement\LibraryManagement\obj\Debug\net10.0\LibraryManagement.xml
+C:\Users\asus\OneDrive\Desktop\Devjoint\LibraryManagement\LibraryManagement\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

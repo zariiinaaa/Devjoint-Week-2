@@ -1,13 +1,23 @@
-using LibraryManagement.Core.Interfaces;
-using LibraryManagement.Infrastructure.Repositories;
-using System.Reflection;
-using LibraryManagement.Middleware;
-using LibraryManagement.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
 using LibraryManagement.Application.Services;
+using LibraryManagement.Core.Interfaces;
+using LibraryManagement.Core.Settings;
+using LibraryManagement.Infrastructure.Data;
+using LibraryManagement.Infrastructure.Repositories;
+using LibraryManagement.Middleware;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+var jwtSettings = builder.Configuration
+    .GetSection("JwtSettings")
+    .Get<JwtSettings>()
+    ?? throw new InvalidOperationException(
+        "JwtSettings configuration is missing.");
 
+builder.Services.AddSingleton(jwtSettings);
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -44,7 +54,46 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(xmlPath);
 });
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services
+    .AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme =
+            JwtBearerDefaults.AuthenticationScheme;
+
+        options.DefaultChallengeScheme =
+            JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters =
+            new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+
+                ValidIssuer = jwtSettings.Issuer,
+                ValidAudience = jwtSettings.Audience,
+
+                IssuerSigningKey =
+                    new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(
+                            jwtSettings.Key)),
+
+                ClockSkew = TimeSpan.Zero
+            };
+    });
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();
@@ -59,6 +108,8 @@ app.UseSwaggerUI(options =>
 });
 
 app.UseMiddleware<ExceptionMiddleware>();
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
