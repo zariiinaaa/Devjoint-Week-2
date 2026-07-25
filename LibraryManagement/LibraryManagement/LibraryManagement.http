@@ -1,21 +1,27 @@
 @LibraryManagement_HostAddress = http://localhost:5098
 
+@accessToken= Paste Tokenn here
+
 GET {{LibraryManagement_HostAddress}}/api/books?pageNumber=1&pageSize=10&sortBy=title&sortDirection=asc
+Authorization: Bearer {{accessToken}}
 Accept: application/json
 
 ###
 
 GET {{LibraryManagement_HostAddress}}/api/authors?pageNumber=1&pageSize=10&sortBy=firstName&sortDirection=asc
+Authorization: Bearer {{accessToken}}
 Accept: application/json
 
 ###
 
 GET {{LibraryManagement_HostAddress}}/api/members?pageNumber=1&pageSize=10&sortBy=firstName&sortDirection=asc
+Authorization: Bearer {{accessToken}}
 Accept: application/json
 
 ###
 
 GET {{LibraryManagement_HostAddress}}/api/loans?pageNumber=1&pageSize=10&sortBy=dueDate&sortDirection=asc
+Authorization: Bearer {{accessToken}}
 Accept: application/json
 
 ###

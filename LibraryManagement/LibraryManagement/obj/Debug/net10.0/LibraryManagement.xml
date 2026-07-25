@@ -8,6 +8,7 @@
             <summary>
             Handles user registration and authentication.
             </summary>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.AuthController.Register(LibraryManagement.Core.DTOs.RegisterRequestDto)">
             <summary>
@@ -25,6 +26,7 @@
             <summary>
             Manages author records.
             </summary>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.AuthorsController.GetAll(LibraryManagement.Core.DTOs.ListQueryDto)">
             <summary>
@@ -61,6 +63,7 @@
             <summary>
             Manages book records.
             </summary>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.BooksController.GetAll(LibraryManagement.Core.DTOs.ListQueryDto)">
             <summary>
@@ -97,6 +100,7 @@
             <summary>
             Manages book loan records.
             </summary>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.LoansController.GetAll(LibraryManagement.Core.DTOs.ListQueryDto)">
             <summary>
@@ -133,6 +137,7 @@
             <summary>
             Manages library member records.
             </summary>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.MembersController.GetAll(LibraryManagement.Core.DTOs.ListQueryDto)">
             <summary>

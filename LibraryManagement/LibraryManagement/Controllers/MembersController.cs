@@ -1,12 +1,14 @@
 ﻿using LibraryManagement.Core.DTOs;
 using LibraryManagement.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Authorization;
 namespace LibraryManagement.Controllers;
 
 /// <summary>
 /// Manages library member records.
 /// </summary>
+/// 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class MembersController : ControllerBase

@@ -1,12 +1,14 @@
 ﻿using LibraryManagement.Core.DTOs;
 using LibraryManagement.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Authorization;
 namespace LibraryManagement.Controllers;
 
 /// <summary>
 /// Handles user registration and authentication.
 /// </summary>
+/// 
+[AllowAnonymous]
 [Route("api/[controller]")]
 [ApiController]
 public class AuthController : ControllerBase
