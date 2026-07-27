@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\asus\\OneDrive\\Desktop\\Devjoint\\LibraryManagement\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7E2B733A-DBF8-FDB5-F770-1327FBD7B25A}|LibraryManagement\\LibraryManagement.csproj|c:\\users\\asus\\onedrive\\desktop\\devjoint\\librarymanagement\\librarymanagement\\librarymanagement.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{7E2B733A-DBF8-FDB5-F770-1327FBD7B25A}|LibraryManagement\\LibraryManagement.csproj|solutionrelative:librarymanagement\\librarymanagement.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LibraryManagement.http",
+              "DocumentMoniker": "C:\\Users\\asus\\OneDrive\\Desktop\\Devjoint\\LibraryManagement\\LibraryManagement\\LibraryManagement.http",
+              "RelativeDocumentMoniker": "LibraryManagement\\LibraryManagement.http",
+              "ToolTip": "C:\\Users\\asus\\OneDrive\\Desktop\\Devjoint\\LibraryManagement\\LibraryManagement\\LibraryManagement.http",
+              "RelativeToolTip": "LibraryManagement\\LibraryManagement.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-07-27T19:44:18.002Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
