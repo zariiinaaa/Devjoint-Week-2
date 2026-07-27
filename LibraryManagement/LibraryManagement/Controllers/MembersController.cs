@@ -24,6 +24,8 @@ public class MembersController : ControllerBase
     /// Returns a paginated and sorted list of members.
     /// </summary>
     /// <param name="query">Pagination and sorting parameters.</param>
+    /// 
+    [Authorize(Roles = "User,Admin")]
     [HttpGet]
     [ProducesResponseType(
         typeof(PagedResponseDto<MemberResponseDto>),
@@ -40,6 +42,8 @@ public class MembersController : ControllerBase
     /// Returns a member by identifier.
     /// </summary>
     /// <param name="id">Member identifier.</param>
+    /// 
+    [Authorize(Roles = "User,Admin")]
     [HttpGet("{id:int}")]
     [ProducesResponseType(
         typeof(MemberResponseDto),
@@ -61,6 +65,8 @@ public class MembersController : ControllerBase
     /// Creates a new library member.
     /// </summary>
     /// <param name="dto">Information for the new member.</param>
+    /// 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [ProducesResponseType(
         typeof(MemberResponseDto),
@@ -83,6 +89,8 @@ public class MembersController : ControllerBase
     /// </summary>
     /// <param name="id">Member identifier.</param>
     /// <param name="dto">Updated member information.</param>
+    /// 
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -105,6 +113,8 @@ public class MembersController : ControllerBase
     /// Deletes a member.
     /// </summary>
     /// <param name="id">Member identifier.</param>
+    /// 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -24,6 +24,9 @@ public class AuthorsController : ControllerBase
     /// Returns a paginated and sorted list of authors.
     /// </summary>
     /// <param name="query">Pagination and sorting parameters.</param>
+    /// 
+    [Authorize(Roles = "User,Admin")]
+    
     [HttpGet]
     [ProducesResponseType(
         typeof(PagedResponseDto<AuthorResponseDto>),
@@ -40,7 +43,10 @@ public class AuthorsController : ControllerBase
     /// Returns an author by identifier.
     /// </summary>
     /// <param name="id">Author identifier.</param>
+    /// 
+    [Authorize(Roles = "User,Admin")]
     [HttpGet("{id:int}")]
+  
     [ProducesResponseType(
         typeof(AuthorResponseDto),
         StatusCodes.Status200OK)]
@@ -61,6 +67,9 @@ public class AuthorsController : ControllerBase
     /// Creates a new author.
     /// </summary>
     /// <param name="dto">Information for the new author.</param>
+    /// 
+    [Authorize(Roles = "Admin")]
+    
     [HttpPost]
     [ProducesResponseType(
         typeof(AuthorResponseDto),
@@ -82,6 +91,10 @@ public class AuthorsController : ControllerBase
     /// </summary>
     /// <param name="id">Author identifier.</param>
     /// <param name="dto">Updated author information.</param>
+    /// 
+
+    [Authorize(Roles = "Admin")]
+   
     [HttpPut("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -103,6 +116,8 @@ public class AuthorsController : ControllerBase
     /// Deletes an author.
     /// </summary>
     /// <param name="id">Author identifier.</param>
+    /// 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -1,4 +1,5 @@
-﻿using LibraryManagement.Core.DTOs;
+﻿using LibraryManagement.Core.Common;
+using LibraryManagement.Core.DTOs;
 using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Interfaces;
 
@@ -47,8 +48,8 @@ public class AuthService : IAuthService
         {
             Username = username,
             Email = email,
-            PasswordHash =
-                _passwordHasher.HashPassword(dto.Password)
+            PasswordHash =_passwordHasher.HashPassword(dto.Password),
+            Role = UserRoles.User
         };
 
         var createdUser =
@@ -86,6 +87,7 @@ public class AuthService : IAuthService
             UserId = user.Id,
             Username = user.Username,
             Email = user.Email,
+            Role = user.Role,
             AccessToken = accessToken,
             ExpiresAt = expiresAt
         };

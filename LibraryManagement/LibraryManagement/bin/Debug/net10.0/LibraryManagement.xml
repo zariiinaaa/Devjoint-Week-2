@@ -33,18 +33,21 @@
             Returns a paginated and sorted list of authors.
             </summary>
             <param name="query">Pagination and sorting parameters.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.AuthorsController.GetById(System.Int32)">
             <summary>
             Returns an author by identifier.
             </summary>
             <param name="id">Author identifier.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.AuthorsController.Create(LibraryManagement.Core.DTOs.AuthorCreateDto)">
             <summary>
             Creates a new author.
             </summary>
             <param name="dto">Information for the new author.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.AuthorsController.Update(System.Int32,LibraryManagement.Core.DTOs.AuthorUpdateDto)">
             <summary>
@@ -52,12 +55,14 @@
             </summary>
             <param name="id">Author identifier.</param>
             <param name="dto">Updated author information.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.AuthorsController.Delete(System.Int32)">
             <summary>
             Deletes an author.
             </summary>
             <param name="id">Author identifier.</param>
+            
         </member>
         <member name="T:LibraryManagement.Controllers.BooksController">
             <summary>
@@ -70,18 +75,21 @@
             Returns a paginated and sorted list of books.
             </summary>
             <param name="query">Pagination and sorting parameters.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.BooksController.GetById(System.Int32)">
             <summary>
             Returns a book by its identifier.
             </summary>
             <param name="id">Book identifier.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.BooksController.Create(LibraryManagement.Core.DTOs.BookCreateDto)">
             <summary>
             Creates a new book.
             </summary>
             <param name="dto">Information for the new book.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.BooksController.Update(System.Int32,LibraryManagement.Core.DTOs.BookUpdateDto)">
             <summary>
@@ -89,12 +97,14 @@
             </summary>
             <param name="id">Book identifier.</param>
             <param name="dto">Updated book information.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.BooksController.Delete(System.Int32)">
             <summary>
             Deletes a book.
             </summary>
             <param name="id">Book identifier.</param>
+            
         </member>
         <member name="T:LibraryManagement.Controllers.LoansController">
             <summary>
@@ -107,18 +117,21 @@
             Returns a paginated and sorted list of loans.
             </summary>
             <param name="query">Pagination and sorting parameters.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.LoansController.GetById(System.Int32)">
             <summary>
             Returns a loan by identifier.
             </summary>
             <param name="id">Loan identifier.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.LoansController.Create(LibraryManagement.Core.DTOs.LoanCreateDto)">
             <summary>
             Creates a new book loan.
             </summary>
             <param name="dto">Information for the new loan.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.LoansController.Update(System.Int32,LibraryManagement.Core.DTOs.LoanUpdateDto)">
             <summary>
@@ -126,12 +139,14 @@
             </summary>
             <param name="id">Loan identifier.</param>
             <param name="dto">Updated loan information.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.LoansController.Delete(System.Int32)">
             <summary>
             Deletes a loan.
             </summary>
             <param name="id">Loan identifier.</param>
+            
         </member>
         <member name="T:LibraryManagement.Controllers.MembersController">
             <summary>
@@ -144,18 +159,21 @@
             Returns a paginated and sorted list of members.
             </summary>
             <param name="query">Pagination and sorting parameters.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.MembersController.GetById(System.Int32)">
             <summary>
             Returns a member by identifier.
             </summary>
             <param name="id">Member identifier.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.MembersController.Create(LibraryManagement.Core.DTOs.MemberCreateDto)">
             <summary>
             Creates a new library member.
             </summary>
             <param name="dto">Information for the new member.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.MembersController.Update(System.Int32,LibraryManagement.Core.DTOs.MemberUpdateDto)">
             <summary>
@@ -163,12 +181,14 @@
             </summary>
             <param name="id">Member identifier.</param>
             <param name="dto">Updated member information.</param>
+            
         </member>
         <member name="M:LibraryManagement.Controllers.MembersController.Delete(System.Int32)">
             <summary>
             Deletes a member.
             </summary>
             <param name="id">Member identifier.</param>
+            
         </member>
         <member name="T:Program">
             <summary>

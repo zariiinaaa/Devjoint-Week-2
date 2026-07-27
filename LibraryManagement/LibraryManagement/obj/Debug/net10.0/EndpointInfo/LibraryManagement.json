@@ -1678,6 +1678,10 @@
           "expiresAt": {
             "type": "string",
             "format": "date-time"
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

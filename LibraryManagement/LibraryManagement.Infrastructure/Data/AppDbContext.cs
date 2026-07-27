@@ -1,4 +1,5 @@
-﻿using LibraryManagement.Core.Entities;
+﻿using LibraryManagement.Core.Common;
+using LibraryManagement.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagement.Infrastructure.Data;
@@ -18,6 +19,8 @@ public class AppDbContext : DbContext
 
     public DbSet<Loan> Loans => Set<Loan>();
     public DbSet<User> Users => Set<User>();
+
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -97,6 +100,13 @@ public class AppDbContext : DbContext
 
             userBuilder.HasIndex(user => user.Email)
                 .IsUnique();
+
+            userBuilder.Property(user => user.Role)
+                .IsRequired()
+                .HasMaxLength(20)
+                .HasDefaultValue(UserRoles.User);
+
+    
         });
     }
 }   

@@ -1,6 +1,6 @@
 @LibraryManagement_HostAddress = http://localhost:5098
 
-@accessToken= Paste Tokenn here
+@accessToken= Tokeni bura paste et
 
 GET {{LibraryManagement_HostAddress}}/api/books?pageNumber=1&pageSize=10&sortBy=title&sortDirection=asc
 Authorization: Bearer {{accessToken}}
@@ -23,5 +23,19 @@ Accept: application/json
 GET {{LibraryManagement_HostAddress}}/api/loans?pageNumber=1&pageSize=10&sortBy=dueDate&sortDirection=asc
 Authorization: Bearer {{accessToken}}
 Accept: application/json
+
+###
+
+POST {{LibraryManagement_HostAddress}}/api/books
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "title": "Role Test Book",
+  "bookCode": "ROLE-USER-001",
+  "publishedYear": 2026,
+  "totalCopies": 1,
+  "availableCopies": 1
+}
 
 ###

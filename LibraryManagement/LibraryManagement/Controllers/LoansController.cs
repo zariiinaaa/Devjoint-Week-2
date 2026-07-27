@@ -24,6 +24,8 @@ public class LoansController : ControllerBase
     /// Returns a paginated and sorted list of loans.
     /// </summary>
     /// <param name="query">Pagination and sorting parameters.</param>
+    /// 
+    [Authorize(Roles = "User,Admin")]
     [HttpGet]
     [ProducesResponseType(
         typeof(PagedResponseDto<LoanResponseDto>),
@@ -40,6 +42,8 @@ public class LoansController : ControllerBase
     /// Returns a loan by identifier.
     /// </summary>
     /// <param name="id">Loan identifier.</param>
+    /// 
+    [Authorize(Roles = "User,Admin")]
     [HttpGet("{id:int}")]
     [ProducesResponseType(
         typeof(LoanResponseDto),
@@ -61,6 +65,8 @@ public class LoansController : ControllerBase
     /// Creates a new book loan.
     /// </summary>
     /// <param name="dto">Information for the new loan.</param>
+    /// 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [ProducesResponseType(
         typeof(LoanResponseDto),
@@ -84,6 +90,8 @@ public class LoansController : ControllerBase
     /// </summary>
     /// <param name="id">Loan identifier.</param>
     /// <param name="dto">Updated loan information.</param>
+    /// 
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -106,6 +114,8 @@ public class LoansController : ControllerBase
     /// Deletes a loan.
     /// </summary>
     /// <param name="id">Loan identifier.</param>
+    /// 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

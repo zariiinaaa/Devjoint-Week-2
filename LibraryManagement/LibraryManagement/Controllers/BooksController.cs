@@ -24,6 +24,8 @@ public class BooksController : ControllerBase
     /// Returns a paginated and sorted list of books.
     /// </summary>
     /// <param name="query">Pagination and sorting parameters.</param>
+    /// 
+    [Authorize(Roles = "User,Admin")]
     [HttpGet]
     [ProducesResponseType(
         typeof(PagedResponseDto<BookResponseDto>),
@@ -40,6 +42,8 @@ public class BooksController : ControllerBase
     /// Returns a book by its identifier.
     /// </summary>
     /// <param name="id">Book identifier.</param>
+    /// 
+    [Authorize(Roles = "User,Admin")]
     [HttpGet("{id:int}")]
     [ProducesResponseType(
         typeof(BookResponseDto),
@@ -61,6 +65,8 @@ public class BooksController : ControllerBase
     /// Creates a new book.
     /// </summary>
     /// <param name="dto">Information for the new book.</param>
+    /// 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [ProducesResponseType(
         typeof(BookResponseDto),
@@ -83,6 +89,8 @@ public class BooksController : ControllerBase
     /// </summary>
     /// <param name="id">Book identifier.</param>
     /// <param name="dto">Updated book information.</param>
+    /// 
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -105,6 +113,8 @@ public class BooksController : ControllerBase
     /// Deletes a book.
     /// </summary>
     /// <param name="id">Book identifier.</param>
+    /// 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
